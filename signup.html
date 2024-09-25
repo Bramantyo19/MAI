@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-form">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <button type="submit">SIGN UP</button>
+            </form>
+            <div class="social-login">
+                <button class="facebook-signup">
+                    <img src="fb logo.jpg" alt="Facebook Logo"> Sign up menggunakan Facebook
+                </button>
+                <button class="google-signup">
+                    <img src="googleicon.png" alt="Google Logo"> Sign up menggunakan Google
+                </button>
+            </div>
+            <p class="login-redirect">Sudah memiliki akun? <a href="login.html">Login disini</a></p>
+            <p id="error-message" style="color: red; display: none;">Password tidak cocok!</p>
+            <p id="success-message" style="color: green; display: none;">Pendaftaran berhasil!</p>
+        </div>
+    </div>
+
+    <script>
+        // Dapatkan elemen form dan pesan error/sukses
+        const signupForm = document.getElementById('signupForm');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
+
+        // Event listener untuk form
+        signupForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah pengiriman form tradisional
+
+            // Ambil nilai dari form
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validasi sederhana
+            if (password !== confirmPassword) {
+                errorMessage.style.display = 'block'; // Tampilkan pesan error
+                successMessage.style.display = 'none'; // Sembunyikan pesan sukses
+            } else {
+                errorMessage.style.display = 'none'; // Sembunyikan pesan error
+                successMessage.style.display = 'block'; // Tampilkan pesan sukses
+                alert('Sign up berhasil!');
+                
+                // Simulasi redirect ke halaman login setelah sukses
+                window.location.href = 'login.html'; // Redirect ke login page
+            }
+        });
+    </script>
+</body>
+</html>

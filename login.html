@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2 class="huruf">Login</h2>
+            <form id="loginForm"> <!-- Tambahkan id pada form -->
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Username">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+                <a href="#" class="forgot-password">Forgot password?</a>
+                <button type="submit" class="login-button">LOGIN</button>
+                <p class="or">Or</p>
+                <div class="social-login">
+                    <button class="fb-login">
+                        <img src="fb logo.jpg" alt="Facebook Logo">
+                        Login menggunakan Facebook
+                    </button>
+                    <button class="google-login">
+                        <img src="googleicon.png" alt="Google Logo">
+                        Login menggunakan Google
+                    </button>
+                </div>
+                <p class="signup-text">Have not account yet? <a href="signup.html">SIGN UP</a></p>
+                <p id="error-message" style="color: red; display: none;">Invalid username or password</p> <!-- Pesan error -->
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Select the form and error message elements
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('error-message');
+
+        // Add submit event listener to the form
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+
+            // Get the username and password values
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simple validation for demo purposes
+            if (username === 'admin' && password === 'password') {
+                alert('Login successful!');
+                // Redirect to the home page after successful login
+                window.location.href = 'home.html'; // Redirect to home page
+            } else {
+                // Display error message if credentials are wrong
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
